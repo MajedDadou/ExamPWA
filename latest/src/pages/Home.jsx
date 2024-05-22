@@ -1,9 +1,18 @@
 import React from 'react';
-import Tab from '../Component/tab';
+import ButtonLink from '../Component/ButtonLink';
+import Title from '../Component/Title';
 function Home() {
     return (
         <>
-        <Tab/>
+        <div>
+            <Title TitleText={'Information'}/>
+        <ButtonLink ButtonLink="/" ButtonText="Åbningstider" />
+        <ButtonLink ButtonLink="/" ButtonText="Billeter" />
+        <ButtonLink ButtonLink="/" ButtonText="Køb Årskort" />
+        <ButtonLink ButtonLink="/" ButtonText="Fodringstider" />
+        <ButtonLink ButtonLink="/" ButtonText="Dyrepassere" />
+
+        </div>
         </>
     )
 }

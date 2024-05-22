@@ -1,0 +1,14 @@
+/* Section.css */
+.section {
+    color: white;
+    margin-bottom: 50px;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .section h2 {
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
