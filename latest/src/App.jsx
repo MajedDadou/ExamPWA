@@ -1,11 +1,11 @@
-// App.jsx
+// src/App.jsx
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Information from './pages/Information.jsx';
-import Armband from './pages/Armband.jsx';
-import Map from './pages/Map.jsx';
-import Profile from './pages/Profile.jsx';
-import BottomNav from './Component/BottomNav.jsx';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Information from './pages/Information';
+import Armband from './pages/Armband';
+import Map from './pages/Map';
+import Profile from './pages/Profile';
+import BottomNav from './Component/BottomNav';
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
           <Route path="/map" element={<Map />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
-        <BottomNav /> {/* Include the BottomNav component */}
+        <BottomNav />
       </div>
     </Router>
   );
