@@ -1,0 +1,25 @@
+/* src/Styles/Profile.css */
+.profile-page {
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .profile-page form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-page input {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .profile-page button {
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  

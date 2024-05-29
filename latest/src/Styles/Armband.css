@@ -1,0 +1,47 @@
+/* src/Styles/Armband.css */
+.armband-page {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .add-armband {
+    margin-bottom: 20px;
+  }
+  
+  .add-armband input {
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  .add-armband button {
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .armband-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .armband-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 10px;
+  }
+  
+  .armband-item span {
+    margin: 0 10px;
+  }
+  
+  .armband-item button {
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+  

@@ -1,61 +1,77 @@
-// src/pages/Profile.jsx
 import React, { useState, useEffect } from 'react';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
-import AuthForm from '../Component/AuthForm';
-import ArmbandManager from '../Component/ArmbandManager';
 import { auth, db } from '../firebase';
-import { getDoc, onSnapshot, query, where} from 'firebase/firestore';
-import { collection, doc } from 'firebase/firestore';
+import SignUpForm from '../Component/SignUpForm';
+import LoginForm from '../Component/LoginForm';
 
 const Profile = () => {
   const [user, setUser] = useState(null);
-  const [userInfo, setUserInfo] = useState({});
-  const [armbands, setArmbands] = useState([]);
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
+        // User is signed in
         setUser(user);
-        const userDocRef = doc(collection(db, 'users'), user.uid);
-        const userDocSnapshot = await getDoc(userDocRef);
-
-        if (userDocSnapshot.exists()) {
-          setUserInfo(userDocSnapshot.data());
-        }
-
-        const q = query(collection(db, 'armbands'), where('userId', '==', user.uid));
-        const unsubscribeArmbands = onSnapshot(q, (querySnapshot) => {
-          const armbandsData = [];
-          querySnapshot.forEach((doc) => {
-            armbandsData.push({ id: doc.id, ...doc.data() });
-          });
-          setArmbands(armbandsData);
-        });
-
-        return () => unsubscribeArmbands();
+        // Fetch user data from the database
+        getUserData(user.uid);
       } else {
+        // No user is signed in
         setUser(null);
-        setUserInfo({});
-        setArmbands([]);
+        setUserData(null);
       }
     });
 
     return () => unsubscribe();
   }, []);
 
+  const getUserData = async (userId) => {
+    try {
+      const userSnapshot = await db.ref(`users/${userId}`).get();
+      if (userSnapshot.exists()) {
+        setUserData(userSnapshot.val());
+      } else {
+        console.error('User data not found.');
+      }
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
+
+  const handleSignUp = (user, userData) => {
+    setUser(user);
+    setUserData(userData);
+  };
+
+  const handleSignIn = (user, userData) => {
+    setUser(user);
+    setUserData(userData);
+  };
+
+  const handleSignOut = () => {
+    auth.signOut().then(() => {
+      // User signed out successfully
+      setUser(null);
+      setUserData(null);
+    }).catch((error) => {
+      // Handle sign-out errors
+      console.error('Error signing out:', error);
+    });
+  };
+
   return (
     <div>
       {user ? (
         <div>
-          <h2>Welcome, {userInfo.name}</h2>
-          <p>Email: {user.email}</p>
-          <p>Phone: {userInfo.phone}</p>
-          <p>Wallet Balance: {userInfo.wallet}</p>
-          <button onClick={() => signOut(auth)}>Logout</button>
-          <ArmbandManager user={user} armbands={armbands} userInfo={userInfo} />
+          <h2>Welcome, {userData?.name}</h2>
+          <p>Email: {userData?.email}</p>
+          <p>Phone Number: {userData?.phoneNumber}</p>
+          <button onClick={handleSignOut}>Sign Out</button>
         </div>
       ) : (
-        <AuthForm onAuth={() => setUser(auth.currentUser)} />
+        <div>
+          <SignUpForm onSignUp={handleSignUp} />
+          <LoginForm onSignIn={handleSignIn} />
+        </div>
       )}
     </div>
   );

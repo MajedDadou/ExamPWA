@@ -1,6 +1,6 @@
 // src/components/AuthForm.jsx
 import React, { useState } from 'react';
-import { auth, db } from '../firebase';
+import { auth } from '../firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 
 const AuthForm = ({ onAuth }) => {
@@ -27,6 +27,8 @@ const AuthForm = ({ onAuth }) => {
       <h2>{isLogin ? 'Login' : 'Sign Up'}</h2>
       <input
         type="email"
+        id="email"
+        name="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email"
@@ -34,6 +36,8 @@ const AuthForm = ({ onAuth }) => {
       />
       <input
         type="password"
+        id="password"
+        name="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
