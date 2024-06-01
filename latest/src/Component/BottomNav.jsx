@@ -1,4 +1,4 @@
-// BottomNav.jsx
+// src/Component/BottomNav.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaInfoCircle, FaMapMarkedAlt, FaUserAlt, FaLifeRing } from 'react-icons/fa';
@@ -10,7 +10,7 @@ const BottomNav = () => {
       <Link to="/information" className="nav-link">
         <FaInfoCircle />
       </Link>
-      <Link to="/armband" className="nav-link">
+      <Link to="/armbands" className="nav-link">
         <FaLifeRing />
       </Link>
       <Link to="/map" className="nav-link">
