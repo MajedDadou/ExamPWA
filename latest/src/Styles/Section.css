@@ -1,14 +1,44 @@
 /* Section.css */
 .section {
-    color: white;
-    margin-bottom: 50px;
-    padding: 20px;
-    border-radius: 5px;
-  }
-  
-  .section h2 {
-    border-bottom: 2px solid #007BFF;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-  }
-  
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.796);
+
+  margin: 20px;
+  color: white;
+  margin-bottom: 50px;
+  padding: 20px;
+  border-radius: 5px;
+}
+.section p{
+  font-size: 1rem;
+  font-weight: 400;
+
+}
+.section h2 {
+  border-bottom: 2px solid #007BFF;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.section .content-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.section .content-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.section .content-list li span {
+  flex: 1;
+  padding: 5px;
+}
+
+.section .content-list li span.left {
+  text-align: left;
+}
+
+.section .content-list li span.right {
+  text-align: right;
+}

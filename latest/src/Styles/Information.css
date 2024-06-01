@@ -1,20 +1,32 @@
 /* Information.css */
 .information-page {
     font-family: Arial, sans-serif;
-    padding: 20px;
 }
-
+body{
+    background-color: #7D593F;
+    margin: 0;
+}
+.title{
+    /* background-color: #C9B988; */
+    margin: 0;
+    padding: 40px 20px;
+}
 .tabs link {
     display: flex;
 }
 
 .tabs {
+    /* background-color: #C9B988 ; */
+    width: 100%;
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .section {
+        padding: 20px;
+
     margin-bottom: 50px;
     padding: 20px;
     border-radius: 5px;
