@@ -1,6 +1,9 @@
 /* ParkMap.css */
+.parkmap-page{
+  height: 90vh;
+  width: 100vw;
+}
 .park-map {
-    height: 400px;
+    height: 100%;
     width: 100%;
   }
-  

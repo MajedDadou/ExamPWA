@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { ref, get, set, push, update, remove, child } from 'firebase/database';
 import { db } from '../firebase';
 import QrScanner from 'react-qr-scanner';
-import '../Styles/Armband.css'; // Import CSS file
+import '../Styles/Armband.css';
+import walletIcon from '../icons/Wallet.png';
+import userIcon from '../icons/user.png';
+import deleteIcon from '../icons/Sletdeletebig.png';
+
 
 const Armband = ({ user }) => {
   const [armbands, setArmbands] = useState([]);
@@ -38,7 +42,6 @@ const Armband = ({ user }) => {
       return;
     }
 
-    // Check for duplicate in global list
     const globalArmbandsRef = ref(db, 'globalArmbands');
     const snapshot = await get(child(globalArmbandsRef, serialNumber));
     if (snapshot.exists()) {
@@ -92,21 +95,32 @@ const Armband = ({ user }) => {
     setArmbands(armbands.filter(armband => armband.id !== id));
   };
 
-  const handleBalanceChange = (id, amount) => {
+  const handleBalanceChange = (id, delta) => {
     const armbandRef = ref(db, `users/${user.uid}/armbands/${id}`);
     const newArmbands = armbands.map(armband => {
       if (armband.id === id) {
-        const newBalance = armband.balance + amount;
-        if (newBalance >= 0 && wallet >= amount) {
+        const newBalance = armband.balance + delta;
+        if (newBalance >= 0 && wallet >= delta) {
           update(armbandRef, { balance: newBalance });
-          setWallet(wallet - amount);
+          setWallet(wallet - delta);
           return { ...armband, balance: newBalance };
         }
       }
       return armband;
     });
     setArmbands(newArmbands);
-    set(ref(db, `users/${user.uid}/wallet`), wallet - amount);
+    set(ref(db, `users/${user.uid}/wallet`), wallet - delta);
+  };
+
+  const handleBalanceInputChange = (id, value) => {
+    const armbandRef = ref(db, `users/${user.uid}/armbands/${id}`);
+    const newBalance = parseInt(value, 10);
+    if (!isNaN(newBalance) && newBalance >= 0 && wallet + armbands.find(a => a.id === id).balance >= newBalance) {
+      const oldBalance = armbands.find(a => a.id === id).balance;
+      update(armbandRef, { balance: newBalance });
+      setWallet(wallet + oldBalance - newBalance);
+      setArmbands(armbands.map(armband => armband.id === id ? { ...armband, balance: newBalance } : armband));
+    }
   };
 
   return (
@@ -115,7 +129,7 @@ const Armband = ({ user }) => {
       <p>Her kan du scanne dit armbånd med kamera eller indtaste armbåndets serienummer manuelt <br />
         <br />Husk at logge ind først
       </p>
-      <div className='holder'>
+      <div className="holder">
         <input
           type="text"
           name="name"
@@ -145,21 +159,31 @@ const Armband = ({ user }) => {
           style={{ width: '100%' }}
         />
       )}
-      <h2>Your Wallet: {wallet} DKK</h2>
-      <h2>Your Armbands</h2>
+      <div className="wallet-container">
+        <img src={walletIcon} alt="Wallet Icon" className="wallet-icon" />
+        <h2>{wallet} DKK</h2>
+      </div>
       <ul>
         {armbands.map((armband) => (
-          <li key={armband.id}>
+          <li key={armband.id} className="armband-item">
+            <img src={userIcon} alt="User Icon" className="user-icon" />
             <input
               type="text"
               value={armband.name}
               onChange={(e) => handleEditArmband(armband.id, e.target.value)}
               className="input-field"
             />
-            - {armband.serialNumber} - Balance: {armband.balance} DKK
-            <button onClick={() => handleBalanceChange(armband.id, 10)} className="balance-button">+10 DKK</button>
-            <button onClick={() => handleBalanceChange(armband.id,-10)} className="balance-button">-10 DKK</button>
-            <button onClick={() => handleDeleteArmband(armband.id, armband.serialNumber)} className="delete-button">Delete</button>
+            <button onClick={() => handleBalanceChange(armband.id, -10)} className="balance-button">-</button>
+            <input
+              type="number"
+              value={armband.balance}
+              onChange={(e) => handleBalanceInputChange(armband.id, e.target.value)}
+              className="balance-input"
+            />
+            <button onClick={() => handleBalanceChange(armband.id, 10)} className="balance-button">+</button>
+            <button onClick={() => handleDeleteArmband(armband.id, armband.serialNumber)} className="delete-button">
+              <img src={deleteIcon} alt="Delete Icon" className="delete-icon" />
+            </button>
           </li>
         ))}
       </ul>

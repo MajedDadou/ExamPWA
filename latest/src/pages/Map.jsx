@@ -1,11 +1,12 @@
 // MapPage.jsx
 import React from 'react';
 import ParkMap from '../Component/ParkMap';
+import '../Styles/ParkMap.css';
 
 const Map = () => {
   return (
-    <div>
-      <h1>Park Map</h1>
+    <div className='parkmap-page'>
+      {/* <h1>Park Map</h1> */}
       <ParkMap />
     </div>
   );

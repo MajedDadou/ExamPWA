@@ -13,7 +13,7 @@ const ParkMap = () => {
     const barnCoordinates = [56.097166258522066, 8.80605692527381]; // Example coordinates for "Barn 1"
     const youCoordinates = [56.09604889431721, 8.807855908345914]; // Example coordinates for "You"
 
-    // Initialize map if it hasn't been initialized yet
+    
     if (mapRef.current === null) {
       mapRef.current = L.map('map').setView(zooCoordinates, 15);
 

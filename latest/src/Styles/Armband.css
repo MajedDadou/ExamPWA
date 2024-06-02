@@ -10,6 +10,7 @@
 }
 
 .armband-container p {
+  font-family: Arial, Helvetica, sans-serif;
   width: 70%;
   text-align: center;
 }
@@ -22,7 +23,6 @@
 
 .input-field {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25) inset;
-
   border-radius: 10px;
   border: 3px solid #333E28;
   background: #678244;
@@ -44,10 +44,8 @@
 }
 
 .scan-button {
-
   font-family: 'Joti One', cursive;
   font-size: large;
-
   width: 100%;
   box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.796);
   background-color: #F4C345;
@@ -60,7 +58,6 @@
   margin-top: 50px;
 }
 
-/* Add button */
 .add-button {
   font-family: 'Joti One', cursive;
   font-size: large;
@@ -73,4 +70,84 @@
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
+}
+
+.wallet-container {
+  display: flex;
+  width: auto;
+}
+
+.wallet-container img {
+  object-fit: none;
+  width: auto;
+}
+
+.armband-item {
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.796);
+  margin-bottom: 10px;
+  display: flex;
+  background-color: #3B5C58;
+  align-items: center;
+  padding: 10px;
+  justify-content: space-around;
+}
+
+.armband-container ul {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  list-style-type: none;
+  flex-direction: column;
+}
+
+.armband-item .input-field {
+  font-family: 'Joti One', cursive;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: center;
+}
+
+.balance-input {
+  font-family: 'Joti One', cursive;
+  background: none;
+  border: none;
+  color: white;
+  text-align: center;
+  width: 50px;
+}
+
+.balance-button {
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.796);
+  font-family: 'Joti One', cursive;
+  background-color: #427F5E;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 5px;
+  transition: background-color 0.3s;
+  font-size: large;
+}
+
+.balance-button:hover {
+  background-color: #45a049;
+}
+
+.delete-button {
+  object-fit: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.delete-icon {
+  width: 20px;
+  height: 20px;
 }
