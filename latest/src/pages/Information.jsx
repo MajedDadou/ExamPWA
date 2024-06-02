@@ -52,23 +52,24 @@ const Information = () => {
 
             </div>
 
-            <Section id="opening-hours" title="Åbningstider" customStyles={{ backgroundColor: '#2A444D' }} content={openingHours} />
+            <Section id="opening-hours" title="Åbningstider" content={openingHours} />
 
-            <Section id="prices" title="Billetpriser" customStyles={{ backgroundColor: '#684024' }} content={prices} />
-
-            <Section id="annual-card" title="Fordele med årskort!" customStyles={{ backgroundColor: '#0C4425' }}>
+            <Section id="prices" title="Billetpriser"  content={prices} />
+            <Section id="annual-card" title="Fordele med årskort!">
                 <p>
                     Med Årskort får I eksklusive rabatter i vores restauranter, caféer, kiosken samt souvenirshoppen. <br /> <br />
                     Derudover giver årskort adgang til en unik oplevelse med dyrene, hvor både børn og voksne kan være med til at fordre dyrene. <br /><br />
                     Børn (3-13 år) kan også give 50% på billetprisen til et andet barn i samme aldersgruppe. <br />
                 </p>
-                <Section content={annualCardPrices} customStyles={{margin: '0', padding: '0', boxShadow: 'none' }} />
-                <button className="buy-button">Buy Annual Card</button>
+                <Section content={annualCardPrices} customStyles={{ margin: '0', padding: '0', boxShadow: 'none' }} />
+                <div className="button-container">
+                    <button className="buy-button">Buy Annual Card</button>
+                </div>
             </Section>
 
-            <Section id="feeding-hours" title="Feeding Hours" customStyles={{ backgroundColor: '#2A444D' }} content={feedingHours}>
+            <Section id="feeding-hours" title="Feeding Hours"  content={feedingHours}>
             </Section>
-            <Section id="tour" title="Turpriser" customStyles={{ backgroundColor: '#684024' }} content={tourPrices} />
+            <Section id="tour" title="Turpriser" content={tourPrices} />
 
         </div>
     );

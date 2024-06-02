@@ -1,47 +1,76 @@
-/* src/Styles/Armband.css */
-.armband-page {
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .add-armband {
-    margin-bottom: 20px;
-  }
-  
-  .add-armband input {
-    padding: 10px;
-    font-size: 16px;
-    margin-right: 10px;
-  }
-  
-  .add-armband button {
-    padding: 10px;
-    font-size: 16px;
-  }
-  
-  .armband-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .armband-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 10px;
-  }
-  
-  .armband-item span {
-    margin: 0 10px;
-  }
-  
-  .armband-item button {
-    padding: 5px 10px;
-    font-size: 16px;
-  }
-  
+.armband-container {
+  background: linear-gradient(180deg, #7D593F 0%, #44403D 100%);
+  color: white;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 100%;
+}
+
+.armband-container p {
+  width: 70%;
+  text-align: center;
+}
+
+.holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-field {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25) inset;
+
+  border-radius: 10px;
+  border: 3px solid #333E28;
+  background: #678244;
+  color: white;
+  margin: 5px;
+  padding: 8px;
+}
+
+.input-field::placeholder {
+  color: rgba(255, 255, 255, 0.829);
+  text-align: center;
+}
+
+.button {
+  margin: 5px;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.scan-button {
+
+  font-family: 'Joti One', cursive;
+  font-size: large;
+
+  width: 100%;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.796);
+  background-color: #F4C345;
+  color: #000000;
+  padding: 7% 20%;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 50px;
+}
+
+/* Add button */
+.add-button {
+  font-family: 'Joti One', cursive;
+  font-size: large;
+  width: 100%;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.796);
+  background-color: #D98624;
+  color: #ffffff;
+  padding: 7% 15%;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}

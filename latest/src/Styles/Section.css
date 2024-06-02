@@ -1,18 +1,18 @@
-/* Section.css */
 .section {
+  background-color: #3B5C58;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.796);
-
   margin: 20px;
   color: white;
   margin-bottom: 50px;
   padding: 20px;
   border-radius: 5px;
 }
-.section p{
+
+.section p {
   font-size: 1rem;
   font-weight: 400;
-
 }
+
 .section h2 {
   border-bottom: 2px solid #007BFF;
   padding-bottom: 10px;
@@ -41,4 +41,26 @@
 
 .section .content-list li span.right {
   text-align: right;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.buy-button {
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.796);
+
+  background-color: #D98624;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.buy-button:hover {
+  background-color: #caab0b;
 }

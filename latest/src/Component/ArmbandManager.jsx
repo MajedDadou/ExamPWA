@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { addDoc, collection, deleteDoc, doc, updateDoc, runTransaction } from 'firebase/firestore';
 import { db } from '../firebase';
+import '../Styles/Armband.css';
 
 const ArmbandManager = ({ user, armbands, userInfo }) => {
   const [newArmband, setNewArmband] = useState('');

@@ -1,12 +1,14 @@
-// src/pages/Armband.jsx
 import React, { useState, useEffect } from 'react';
 import { ref, get, set, push, update, remove, child } from 'firebase/database';
 import { db } from '../firebase';
+import QrScanner from 'react-qr-scanner';
+import '../Styles/Armband.css'; // Import CSS file
 
 const Armband = ({ user }) => {
   const [armbands, setArmbands] = useState([]);
   const [newArmband, setNewArmband] = useState({ name: '', serialNumber: '' });
   const [wallet, setWallet] = useState(0);
+  const [scanning, setScanning] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -61,6 +63,20 @@ const Armband = ({ user }) => {
     setNewArmband({ ...newArmband, [name]: value });
   };
 
+  const handleScan = (data) => {
+    if (data && typeof data === 'object' && data.text) {
+      const scannedText = data.text;
+      setNewArmband({ ...newArmband, serialNumber: scannedText });
+      setScanning(false);
+    } else {
+      console.error('Invalid scanned data:', data);
+    }
+  };
+
+  const handleError = (err) => {
+    console.error(err);
+  };
+
   const handleEditArmband = (id, newName) => {
     const armbandRef = ref(db, `users/${user.uid}/armbands/${id}`);
     update(armbandRef, { name: newName }).then(() => {
@@ -94,25 +110,41 @@ const Armband = ({ user }) => {
   };
 
   return (
-    <div>
-      <h1>Armband Management</h1>
-      <div>
+    <div className="armband-container">
+      <h1>Armbånd</h1>
+      <p>Her kan du scanne dit armbånd med kamera eller indtaste armbåndets serienummer manuelt <br />
+        <br />Husk at logge ind først
+      </p>
+      <div className='holder'>
         <input
           type="text"
           name="name"
           value={newArmband.name}
           onChange={handleInputChange}
-          placeholder="Armband Name"
+          placeholder="Armbånd Navn"
+          className="input-field"
         />
         <input
           type="text"
           name="serialNumber"
           value={newArmband.serialNumber}
           onChange={handleInputChange}
-          placeholder="Serial Number"
+          placeholder="Serialnummer"
+          className="input-field"
         />
-        <button onClick={handleAddArmband}>Add Armband</button>
+        <button onClick={handleAddArmband} className="add-button">Tilføj Armbånd</button>
+        <button onClick={() => setScanning(!scanning)} className="scan-button">
+          {scanning ? 'Stop Scan' : 'Scan QR Code'}
+        </button>
       </div>
+      {scanning && (
+        <QrScanner
+          delay={300}
+          onError={handleError}
+          onScan={handleScan}
+          style={{ width: '100%' }}
+        />
+      )}
       <h2>Your Wallet: {wallet} DKK</h2>
       <h2>Your Armbands</h2>
       <ul>
@@ -122,11 +154,12 @@ const Armband = ({ user }) => {
               type="text"
               value={armband.name}
               onChange={(e) => handleEditArmband(armband.id, e.target.value)}
+              className="input-field"
             />
             - {armband.serialNumber} - Balance: {armband.balance} DKK
-            <button onClick={() => handleBalanceChange(armband.id, 10)}>+10 DKK</button>
-            <button onClick={() => handleBalanceChange(armband.id, -10)}>-10 DKK</button>
-            <button onClick={() => handleDeleteArmband(armband.id, armband.serialNumber)}>Delete</button>
+            <button onClick={() => handleBalanceChange(armband.id, 10)} className="balance-button">+10 DKK</button>
+            <button onClick={() => handleBalanceChange(armband.id,-10)} className="balance-button">-10 DKK</button>
+            <button onClick={() => handleDeleteArmband(armband.id, armband.serialNumber)} className="delete-button">Delete</button>
           </li>
         ))}
       </ul>

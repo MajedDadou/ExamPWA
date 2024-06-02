@@ -1,24 +1,20 @@
-/* Tab.css */
 .tab-link {
     text-decoration: none;
     color: white;
-    /* padding: 1vw 2vw; */
     border-radius: 5px;
     margin: 0 5px;
     transition: background-color 0.3s;
-}
-
-.tab-link:hover {
-    /* background-color: #D98624; */
-}
-
-.TabContainer {
+  }
+  
+  .tab-link:hover {
+  }
+  
+  .TabContainer {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.604);
-
     padding: 1vw 1vw;
     border-radius: 5px;
     background-color: #D98624;
     margin: 2px 3px 10px 20px;
     display: flex;
     justify-content: space-around;
-}
+  }
