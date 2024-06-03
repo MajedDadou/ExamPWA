@@ -1,4 +1,3 @@
-// MapPage.jsx
 import React from 'react';
 import ParkMap from '../Component/ParkMap';
 import '../Styles/ParkMap.css';

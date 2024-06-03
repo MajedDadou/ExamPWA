@@ -1,4 +1,3 @@
-// src/pages/Information.jsx
 import React from 'react';
 import Section from '../Component/Section';
 import Tab from '../Component/tab';

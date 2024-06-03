@@ -1,4 +1,3 @@
-// ParkMap.jsx
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -17,12 +16,10 @@ const ParkMap = () => {
     if (mapRef.current === null) {
       mapRef.current = L.map('map').setView(zooCoordinates, 15);
 
-      // Add tile layer
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
       }).addTo(mapRef.current);
 
-      // Add markers
       L.marker(zooCoordinates).addTo(mapRef.current)
         .bindPopup('Jyllands Park Zoo')
         .openPopup();

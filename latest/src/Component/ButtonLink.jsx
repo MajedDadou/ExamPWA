@@ -1,8 +1,6 @@
-// ButtonLink.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../Styles/ButtonLink.css'; // Import the CSS file for styling
-
+import '../Styles/ButtonLink.css'; 
 const ButtonLink = ({ customStyles, ButtonLink, ButtonText }) => {
   return (
     <div className="button-container" style={customStyles?.container}>

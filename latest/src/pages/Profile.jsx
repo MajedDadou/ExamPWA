@@ -1,4 +1,3 @@
-// src/pages/Profile.jsx
 import React, { useState, useEffect } from 'react';
 import { auth } from '../firebase';
 import SignUpForm from '../Component/SignUpForm';

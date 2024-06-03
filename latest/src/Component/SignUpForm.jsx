@@ -1,4 +1,3 @@
-// SignUpForm.jsx
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { set, ref } from 'firebase/database';
@@ -47,7 +46,6 @@ const SignUpForm = () => {
         armbandSerialNumber,
         wallet: 100 // Set initial wallet balance to 100 DKK
       });
-      // Optionally handle success, e.g., redirect or show a message
     } catch (error) {
       console.error('Error signing up:', error);
       setError('Error signing up. Please try again.');

@@ -1,4 +1,3 @@
-// UserProfile.jsx
 import React, { useState, useEffect } from 'react';
 import { ref, get, update } from 'firebase/database';
 import { db } from '../firebase';
