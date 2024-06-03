@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
+import '../Styles/Profile.css';
+
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -28,11 +30,13 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-      <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
-      <button type="submit">Sign In</button>
+    <div className='holder'>
+    <form className='holder login' onSubmit={handleSubmit}>
+      <input className='input-field' type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+      <input className='input-field' type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
+      <button className='scan-button' type="submit">Log ind</button>
     </form>
+    </div>
   );
 };
 

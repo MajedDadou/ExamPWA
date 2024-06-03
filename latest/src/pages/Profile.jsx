@@ -4,6 +4,8 @@ import { auth } from '../firebase';
 import SignUpForm from '../Component/SignUpForm';
 import LoginForm from '../Component/LoginForm';
 import UserProfile from '../Component/UserProfile';
+import '../Styles/Profile.css';
+
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -25,14 +27,15 @@ const Profile = () => {
   };
 
   return (
-    <div>
+    <div className='profile-container'>
       {user ? (
         <div>
-          <button onClick={handleSignOut}>Sign Out</button>
           <UserProfile user={user} />
+          <button className='scan-button' onClick={handleSignOut}>Sign Out</button>
+
         </div>
       ) : (
-        <div>
+        <div className='holder'>
           <SignUpForm />
           <LoginForm />
         </div>

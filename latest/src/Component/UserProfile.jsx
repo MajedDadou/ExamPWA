@@ -2,6 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import { ref, get, update } from 'firebase/database';
 import { db } from '../firebase';
+import '../Styles/Profile.css';
+import editIcon from '../icons/edit.png';
+
+import walletIcon from '../icons/Wallet.png';
 
 const UserProfile = ({ user, onSignOut }) => {
   const [userData, setUserData] = useState(null);
@@ -68,23 +72,30 @@ const UserProfile = ({ user, onSignOut }) => {
   return (
     <div>
       {editing ? (
-        <form onSubmit={handleUpdate}>
-          <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
-          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-          <input type="text" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} required />
-          <input type="text" name="armbandSerialNumber" placeholder="Armband Serial Number" value={formData.armbandSerialNumber} onChange={handleChange} required />
-          <button type="submit">Save</button>
-          <button type="button" onClick={() => setEditing(false)}>Cancel</button>
+        <form className='holder' onSubmit={handleUpdate}>
+          <input className='input-field' type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
+          <input className='input-field' type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+          <input className='input-field' type="text" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} required />
+          <input className='input-field' type="text" name="armbandSerialNumber" placeholder="Armband Serial Number" value={formData.armbandSerialNumber} onChange={handleChange} required />
+          <button className='add-button edit' type="submit">Save</button>
+          <button className='add-button edit' type="button" onClick={() => setEditing(false)}>Cancel</button>
         </form>
       ) : (
         <div>
-          <h2>Welcome, {userData.name}</h2>
-          <p>Email: {userData.email}</p>
-          <p>Phone Number: {userData.phoneNumber}</p>
-          <p>Armband Serial Number: {userData.armbandSerialNumber}</p>
-          <p>Wallet Balance: {userData.wallet} DKK</p>
-          <button onClick={() => setEditing(true)}>Edit</button>
-          <button onClick={onSignOut}>Sign Out</button>
+          <h2>Velkommen {userData.name}</h2>
+          <div className='section font'>
+            <p>Email: {userData.email}</p>
+            <p>Phone Number: {userData.phoneNumber}</p>
+            <p>Armband Serial Number: {userData.armbandSerialNumber}</p>
+            <button onClick={() => setEditing(true)} className="icon-button">
+              <img src={editIcon} alt="Edit" className="icon-image" />
+            </button>
+            <div className="wallet-container">
+              <img src={walletIcon} alt="Wallet Icon" className="wallet-icon" />
+              <h1>{userData.wallet} DKK</h1>
+            </div>
+          </div>
+
         </div>
       )}
     </div>

@@ -1,11 +1,15 @@
 .information-page {
+  
+  background: linear-gradient(180deg, #7D593F 0%, #44403D 100%);
     font-family: Arial, sans-serif;
   }
   h1, h2 {
     font-family: 'Joti One', cursive;
   }
   body {
-    background-color: #7D593F;
+    background: linear-gradient(180deg, #7D593F 0%, #44403D 100%);
+
+    height: 100%;
     margin: 0;
   }
   

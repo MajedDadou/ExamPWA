@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { set, ref } from 'firebase/database';
 import { auth, db } from '../firebase';
+import '../Styles/Profile.css';
+
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -53,15 +55,17 @@ const SignUpForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
-      <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-      <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
-      <input type="text" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} required />
-      <input type="text" name="armbandSerialNumber" placeholder="Armband Serial Number" value={formData.armbandSerialNumber} onChange={handleChange} required />
+    <div className='holder'>
+    <form className='holder' onSubmit={handleSubmit}>
+      <input className='input-field' type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
+      <input className='input-field' type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+      <input className='input-field' type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
+      <input className='input-field' type="text" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} required />
+      <input className='input-field' type="text" name="armbandSerialNumber" placeholder="Armband Serial Number" value={formData.armbandSerialNumber} onChange={handleChange} required />
       {error && <p>{error}</p>}
-      <button type="submit">Sign Up</button>
+      <button className='add-button' type="submit">Sign Up</button>
     </form>
+    </div>
   );
 };
 
