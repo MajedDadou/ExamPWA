@@ -6,9 +6,7 @@
     transition: background-color 0.3s;
   }
   
-  .tab-link:hover {
-  }
-  
+
   .TabContainer {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.604);
     padding: 1vw 1vw;
